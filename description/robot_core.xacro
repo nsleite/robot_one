@@ -45,6 +45,11 @@
         </xacro:inertial_box>
     </link>
 
+    <gazebo reference="chassi_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+
     <!-- chassi joint -->
     <joint name="chassi_joint" type='fixed'>
         <parent link="base_link"/>
@@ -71,6 +76,11 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <gazebo reference="back_left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
 
     <!-- back left wheel joint -->
     <joint name="back_left_wheel_joint" type="continuous">
@@ -100,6 +110,10 @@
         </xacro:inertial_cylinder>
     </link>
 
+    <gazebo reference="back_right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     <!-- back right wheel joint -->
     <joint name="back_right_wheel_joint" type="continuous">
         <parent link="base_link"/>
@@ -128,6 +142,11 @@
         </xacro:inertial_cylinder>
     </link>
 
+    <gazebo reference="front_left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
     <!-- front left wheel joint -->
     <joint name="front_left_wheel_joint" type="continuous">
         <parent link="base_link"/>
@@ -155,6 +174,11 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <gazebo reference="front_right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
 
     <!-- front right wheel joint -->
     <joint name="front_right_wheel_joint" type="continuous">
