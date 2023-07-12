@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <material name="white">
+        <color rgba="1 1 1 1"/>    
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+    <material name="orange">
+        <color rgba="1 0.3 0.1 0.8"/>
+    </material>
+    
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1"/>
+    </material>
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <!-- ==========================CHASSI-->
+
+    <!-- base link -->
+    <link name="base_link">
+    </link>
+
+    <!-- chassi link -->
+    <link name="chassi_link">
+        <visual>
+            <orign xyz="0 0 0.04 " rpy="0 0 0"/>
+            <geometry>
+                <box size="0.28 0.15 0.04"/>
+            </geometry>
+            <material name='white'/>
+        </visual>
+        <collision>
+            <orign xyz="0 0 0.04 " rpy="0 0 0"/>
+            <geometry>
+                <box size="0.28 0.15 0.04"/>
+            </geometry>        
+        </collision>
+        <xacro:inertial_box mass="1" x="0.28" y="0.15" z="0.04">
+            <orign xyz="0 0 0.04 " rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="chassi_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+
+    <!-- chassi joint -->
+    <joint name="chassi_joint" type='fixed'>
+        <parent link="base_link"/>
+        <child link="chassi_link"/>
+        <origin xyz="-0.1 0 0"/>
+    </joint>
+
+    <!-- ========================== BACK LEFT WHEEL -->
+    
+    <!-- back left wheel link -->
+    <link name="back_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.075" radius="0.03" length="0.06">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="back_left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
+    <!-- back left wheel joint -->
+    <joint name="back_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_left_wheel"/>
+        <origin xyz="0 0.105 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <!-- =========================== BACK RIGHT WHEEL -->
+
+    <!-- back right wheel link -->
+    <link name="back_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.075" radius="0.03" length="0.06">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="back_right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <!-- back right wheel joint -->
+    <joint name="back_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_right_wheel"/>
+        <origin xyz="0 -0.105 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <!-- ========================== FRONT LEFT WHEEL -->
+    
+    <!-- front left wheel link -->
+    <link name="front_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.075" radius="0.03" length="0.06">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="front_left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
+    <!-- front left wheel joint -->
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="-0.2 0.105 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <!-- =========================== FRONT RIGHT WHEEL -->
+
+    <!-- front right wheel link -->
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.03" length="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.075" radius="0.03" length="0.06">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="front_right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
+    <!-- front right wheel joint -->
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="-0.2 -0.105 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <!-- ================================== Ultrasonic Sensor (front)-->
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="chassi_link"/>
+        <child link="laser_frame"/>
+        <origin xyz="0.152 0 0.02" rpy="0 0 0"/>
+    </joint>
+
+    <link name="laser_frame">
+        <visual>
+            <orign xyz="0.152 0 0.02" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.025 0.025 0.05"/>
+            </geometry>
+            <material name='red'/>
+        </visual>
+        <collision>
+            <orign xyz="0.152 0 0.02" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.025 0.025 0.05"/>
+            </geometry>        
+        </collision>
+        <xacro:inertial_box mass="0.1" x="0.025" y="0.025" z="0.05">
+            <orign xyz="0.152 0 0.02" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="laser_frame">
+        <material>Gazebo/Red</material>
+        <sensor name="laser" type="ray">
+            <pose>0.15 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>10</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-0.15</min_angle>
+                        <max_angle>0.15</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>10</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-0.15</min_angle>
+                        <max_angle>0.15</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>2</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>~/out:=range</argument>
+                </ros>
+                <output_type>sensor_msgs/Range</output_type>
+                <radiation_type>ultrasound</radiation_type>
+                <frame_name>laser_frame</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- ================================== Ultrasonic Sensor (back)-->
+    
+    <joint name="laser_joint_back" type="fixed">
+        <parent link="chassi_link"/>
+        <child link="laser_frame_back"/>
+        <origin xyz="-0.152 0 0.02" rpy="0 0 ${pi}"/>
+    </joint>
+
+    <link name="laser_frame_back">
+        <visual>
+            <orign xyz="-0.152 0 0.02" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.025 0.025 0.05"/>
+            </geometry>
+            <material name='red'/>
+        </visual>
+        <collision>
+            <orign xyz="-0.152 0 0.02" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.025 0.025 0.05"/>
+            </geometry>        
+        </collision>
+        <xacro:inertial_box mass="0.1" x="0.025" y="0.025" z="0.05">
+            <orign xyz="-0.152 0 0.02" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="laser_frame_back">
+        <material>Gazebo/Red</material>
+        <sensor name="sonar_2" type="ray">
+            <pose>0.15 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>10</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-0.15</min_angle>
+                        <max_angle>0.15</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>10</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-0.15</min_angle>
+                        <max_angle>0.15</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>2</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser_controller_2" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>~/out:=range2</argument>
+                </ros>
+                <output_type>sensor_msgs/Range</output_type>
+                <radiation_type>ultrasound</radiation_type>
+                <frame_name>laser_frame_back</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+</robot>
