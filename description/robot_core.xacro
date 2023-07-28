@@ -1,3 +1,10 @@
+<!--================================================================
+    This one was the original URDF description of the robot, but now
+it's just an additional file to make tests in the model, or
+implement other plugins and sensors that are not currently
+in the main project 
+===================================================================-->
+
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
