@@ -10,7 +10,6 @@
                 <remapping>odom:=odom</remapping>
             </ros>
 
- 
             <!-- Wheel information -->
             <num_wheel_pairs>2</num_wheel_pairs>
 

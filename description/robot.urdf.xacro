@@ -3,6 +3,6 @@
 
     <xacro:include filename="robot2_core.xacro" />
     <xacro:include filename="gazebo_control.xacro"/>
-    <xacro:include filename="sonar.xacro"/>
+    <!-- <xacro:include filename="sonar.xacro"/> -->
 
 </robot>

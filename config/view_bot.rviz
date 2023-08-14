@@ -61,31 +61,33 @@ Visualization Manager:
           Value: true
         front_right_wheel:
           Value: true
-        left_wheel:
+        laser_frame:
           Value: true
-        right_wheel:
+        laser_frame_back:
           Value: true
-      Marker Scale: 1
+        odom:
+          Value: true
+      Marker Scale: 0.25
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          back_left_wheel:
-            {}
-          back_right_wheel:
-            {}
-          chassi_link:
-            {}
-          front_left_wheel:
-            {}
-          front_right_wheel:
-            {}
-          left_wheel:
-            {}
-          right_wheel:
-            {}
+        odom:
+          base_link:
+            back_left_wheel:
+              {}
+            back_right_wheel:
+              {}
+            chassi_link:
+              laser_frame:
+                {}
+              laser_frame_back:
+                {}
+            front_left_wheel:
+              {}
+            front_right_wheel:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -135,15 +137,51 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        laser_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        laser_frame_back:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: false
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz_default_plugins/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: Range
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /range
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz_default_plugins/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: Range
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /range2
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -183,25 +221,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.6261125206947327
+      Distance: 3.2251439094543457
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0409112386405468
-        Y: -0.006450629327446222
-        Z: -0.0029377061873674393
+        X: 0.7106386423110962
+        Y: 0.17577485740184784
+        Z: 0.1549379676580429
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.31020310521125793
+      Pitch: 0.7997967600822449
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.188556671142578
+      Yaw: 4.738570213317871
     Saved: ~
 Window Geometry:
   Displays:

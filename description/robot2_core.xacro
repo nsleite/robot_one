@@ -34,17 +34,17 @@
         <visual>
             <orign xyz="0 0 0.04 " rpy="0 0 0"/>
             <geometry>
-                <box size="0.28 0.15 0.04"/>
+                <box size="0.28 0.106 0.04"/>
             </geometry>
             <material name='white'/>
         </visual>
         <collision>
             <orign xyz="0 0 0.04 " rpy="0 0 0"/>
             <geometry>
-                <box size="0.28 0.15 0.04"/>
+                <box size="0.28 0.106 0.04"/>
             </geometry>        
         </collision>
-        <xacro:inertial_box mass="1" x="0.28" y="0.15" z="0.04">
+        <xacro:inertial_box mass="1" x="0.28" y="0.106" z="0.04">
             <orign xyz="0 0 0.04 " rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -90,7 +90,7 @@
     <joint name="back_left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="back_left_wheel"/>
-        <origin xyz="0 0.105 0" rpy="-${pi/2} 0 0"/>
+        <origin xyz="0 0.083 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
     </joint>
 
@@ -122,7 +122,7 @@
     <joint name="back_right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="back_right_wheel"/>
-        <origin xyz="0 -0.105 0" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 -0.083 0" rpy="${pi/2} 0 0"/>
         <axis xyz="0 0 -1"/>
     </joint>
 
@@ -155,7 +155,7 @@
     <joint name="front_left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="front_left_wheel"/>
-        <origin xyz="-0.2 0.105 0" rpy="-${pi/2} 0 0"/>
+        <origin xyz="-0.2 0.083 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
     </joint>
 
@@ -188,7 +188,7 @@
     <joint name="front_right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="front_right_wheel"/>
-        <origin xyz="-0.2 -0.105 0" rpy="${pi/2} 0 0"/>
+        <origin xyz="-0.2 -0.083 0" rpy="${pi/2} 0 0"/>
         <axis xyz="0 0 -1"/>
     </joint>
 

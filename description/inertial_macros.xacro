@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
     <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- Specify some standard inertial calculations https://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
-    <!-- These make use of xacro's mathematical functionality -->
+    <!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
 
     <xacro:macro name="inertial_box" params="mass x y z *origin">
         <inertial>
@@ -13,7 +12,6 @@
                     izz="${(1/12) * mass * (x*x+y*y)}" />
         </inertial>
     </xacro:macro>
-
 
     <xacro:macro name="inertial_cylinder" params="mass length radius *origin">
         <inertial>
